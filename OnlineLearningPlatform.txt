@@ -1,0 +1,34 @@
+Question: Online Learning Platform System
+You're developing a system for an online learning platform. The platform has different types of users: Students, Teachers, and Admins. Each user can perform their specific action.
+
+ Requirements :
+Create a base abstract class User
+Fields: name, email
+Constructor to initialize
+Abstract method: performAction()
+
+Create a class Student that extends User
+Field: courseEnrolled
+Constructor that chains to User constructor
+Override performAction() to print enrolled course and action like "Viewing lectures".
+
+Create a class Teacher that extends User
+Field: subjectTaught
+Constructor chaining to User
+Override performAction() to print "Uploading lectures" and subject
+
+Create a class Admin that extends User
+Field: adminLevel
+Constructor
+Override performAction() to print "Managing platform" with level
+
+Create an interface called FeedbackGiver
+Method: giveFeedback()
+Make Student and Teacher both implement FeedbackGiver
+Student gives feedback like "Loved the video lectures"
+Teacher gives feedback like "Need better tools for lecture upload"
+
+In main():
+Create an array of 5 User references (2 Students, 2 Teachers, 1 Admin)
+Call performAction() for each
+For each User who is also a FeedbackGiver, call giveFeedback() using instanceof
