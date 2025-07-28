@@ -1,0 +1,30 @@
+Building a basic company employee system. Design the following classes:
+
+Requirements for question
+Person class
+Fields: name, age
+Constructor to initialize both
+Method: displayInfo() → prints name and age
+
+Employee class (inherits Person)
+Fields: employeeId, department
+Constructor: takes name, age, employeeId, and department
+Overrides displayInfo() to also show employeeId and department
+Method: work() → print "Employee is working"
+
+Manager class (inherits Employee)
+Field: teamSize
+Constructor: sets all fields including from Person and Employee
+Overrides work() → print "Manager is managing a team of X people"
+Overrides displayInfo() → show all info + teamSize
+
+Developer class (inherits Employee)
+Field: specialization (e.g., "Backend", "Frontend")
+Constructor sets all fields
+Overrides work() → print "Developer is coding in [specialization]"
+Overrides displayInfo() too
+
+Company class (Main class)
+Create a few Managers and Developers (polymorphism!)
+Store them in an array or list of type Employee
+Use a loop to call work() and displayInfo() on eac
