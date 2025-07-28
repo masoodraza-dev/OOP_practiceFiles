@@ -1,0 +1,23 @@
+Building a small part of a Library Management System.
+
+Design the following class hierarchy:
+
+Class: LibraryItem
+Fields: title (String), itemId (int)
+Constructor: Sets both fields
+Method: displayInfo() → prints title and itemId
+
+Class: Book extends LibraryItem
+Extra field: author (String)
+Constructor: Sets title, itemId, and author
+Override displayInfo() to also print the author
+
+Class: Magazine extends LibraryItem
+Extra field: issueNumber (int)
+Constructor: Sets title, itemId, and issueNumber
+Override displayInfo() to also print the issueNumber
+
+Main class: LibraryTest
+Create an array of LibraryItem (size 4)
+Store 2 Book objects and 2 Magazine objects
+Loop through array and call displayInfo() for each item (use polymorphism)
