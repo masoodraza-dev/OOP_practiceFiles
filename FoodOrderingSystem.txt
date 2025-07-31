@@ -1,0 +1,18 @@
+Write Java code to implement the above requirements with proper OOP structure.
+Use ArrayList for storing food items and ensure your code is readable and commented.
+Your code must be at least 100+ lines.
+
+Requirements:
+An abstract class FoodItem with common properties like name, price, and prepare().
+
+Subclasses Pizza, Burger, and Drink which inherit from FoodItem and override the prepare() method.
+
+An interface Discountable with a method applyDiscount(double percentage).
+
+A Customer class with properties like name, phoneNumber, and placeOrder().
+
+A Restaurant class to manage and display the list of orders.
+
+Demonstrate polymorphism: store different types of FoodItem in an array or list and call prepare().
+
+Demonstrate interface usage by applying discount to items.
