@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Cashier {
     private int bill;
-    private int[] denominations;
+    private int[] denominations = {1,2,5,10,20,50,100,500,1000,5000};
     private int[] returnMoney;
     private Scanner scanner;
     
@@ -135,4 +135,5 @@ public class Cashier {
     public int[] getReturnMoney() {
         return returnMoney.clone();
     }
+
 }
