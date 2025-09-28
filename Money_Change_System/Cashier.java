@@ -24,15 +24,13 @@ public class Cashier {
         
         // Denominations input from user
         int numDenominations = 10;
-        
-        this.denominations = new int[numDenominations];
         this.returnMoney = new int[numDenominations];
         
-        System.out.println("Enter denominations (from smallest to largest):");
-        for (int i = 0; i < numDenominations; i++) {
-            System.out.print("Denomination " + (i + 1) + ": Rs. ");
-            denominations[i] = scanner.nextInt();
-        }
+        // System.out.println("Enter denominations (from smallest to largest):");
+        // for (int i = 0; i < numDenominations; i++) {
+        //     System.out.print("Denomination " + (i + 1) + ": Rs. ");
+        //     denominations[i] = scanner.nextInt();
+        // }
         
         Arrays.sort(denominations); // Sort denominations
         System.out.println("Cashier setup completed!\n");
@@ -136,4 +134,5 @@ public class Cashier {
     }
 
 }
+
 
