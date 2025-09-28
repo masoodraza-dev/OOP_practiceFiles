@@ -23,8 +23,7 @@ public class Cashier {
         this.bill = scanner.nextInt();
         
         // Denominations input from user
-        System.out.print("How many types of denominations? ");
-        int numDenominations = scanner.nextInt();
+        int numDenominations = 10;
         
         this.denominations = new int[numDenominations];
         this.returnMoney = new int[numDenominations];
@@ -137,3 +136,4 @@ public class Cashier {
     }
 
 }
+
