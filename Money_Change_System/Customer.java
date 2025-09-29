@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Customer {
     private int wallet;
-    private Scanner scanner;
+    Scanner scanner = new Scanner(System.in);
     
     // Constructor
     public Customer() {
@@ -42,23 +42,18 @@ public class Customer {
         // Process payment
         wallet -= amountToPay;
         System.out.println("✅ Payment successful! Paid: Rs. " + amountToPay);
-        System.out.println("Wallet after payment: Rs. " + wallet);
         
         // Process change
         int change = amountToPay - cashier.getBill();
         if (change > 0) {
             System.out.println("Change received: Rs. " + change);
+            cashier.displayReturnedMoney();
             wallet += change;
             System.out.println("✅ Change added to wallet. New balance: Rs. " + wallet);
         }
-    }
-    
-    // Add money to wallet
-    public void addMoneyToWallet() {
-        System.out.print("Enter amount to add to wallet: Rs. ");
-        int amount = scanner.nextInt();
-        wallet += amount;
-        System.out.println("✅ Money added! New wallet balance: Rs. " + wallet);
+        System.out.println("Wallet after payment: Rs. " + wallet);
+        
+        
     }
     
     // toString method
