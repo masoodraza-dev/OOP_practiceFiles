@@ -1,53 +1,82 @@
-import java.util.ArrayList;
 public class StudentList {
-    private ArrayList<Student> list = new ArrayList<>();
+    private Student[] list;
+    private int size;      
+    private int capacity;   
 
-    public void addStudent(Student s){
-        list.add(s);
-        System.out.println("Student added succesfully:");
+    public StudentList() {
+        this.capacity = 4;   
+        this.list = new Student[capacity];
+        this.size = 0;
     }
 
-    public void removeStudent(Student s){
-       if ( list.remove(s)){
-        System.out.println("Student removed:");}
-        else{
-            System.out.println("Student not found in the list");
+ 
+    private void increaseCapacity() {
+        if (size >= capacity) {
+            capacity *= 2;
+            Student[] newList = new Student[capacity];
+            for (int i = 0; i < size; i++) {
+                newList[i] = list[i];
+            }
+            list = newList;
         }
     }
 
-    public int searchByName(String name){
-        for (int i = 0 ; i < list.size() ; i++){
-            Student s = list.get(i);
+    public void addStudent(Student s) {
+        increaseCapacity();
+        list[size++] = s;
+        System.out.println("Student added successfully!");
+    }
 
-            if(s.getName().equalsIgnoreCase(name)){
-                return i;
+    //remove student method
+    public void removeStudent(Student s) {
+        int index = -1;
+        for (int i = 0; i < size; i++) {
+            if (list[i].equals(s)) {
+                index = i;
+                break;
             }
         }
 
+        if (index != -1) {
+            for (int i = index; i < size - 1; i++) {
+                list[i] = list[i + 1]; // shift elements left
+            }
+            list[size - 1] = null;
+            size--;
+            System.out.println("Student removed!");
+        } else {
+            System.out.println("Student not found in the list.");
+        }
+    }
+
+    // Search by name
+    public int searchByName(String name) {
+        for (int i = 0; i < size; i++) {
+            if (list[i].getName().equalsIgnoreCase(name)) {
+                return i;
+            }
+        }
         return -1;
     }
 
-    public Student searchByRollNum(String id){
-        for (int i = 0 ; i<list.size(); i++){
-            Student s =  list.get(i);
-
-            if (s.getRollNum().equalsIgnoreCase(id)){
-                return s;
+    // Search by Roll Number
+    public Student searchByRollNum(String id) {
+        for (int i = 0; i < size; i++) {
+            if (list[i].getRollNum().equalsIgnoreCase(id)) {
+                return list[i];
             }
         }
         return null;
     }
 
+    // Display students
     public void displayStudents() {
-    if (list.isEmpty()) {
-        System.out.println("No students in the list.");
-        return;
+        if (size == 0) {
+            System.out.println("No students in the list.");
+            return;
+        }
+        for (int i = 0; i < size; i++) {
+            System.out.println(list[i]);
+        }
     }
-
-    for (Student s : list) {
-        System.out.println(s);
-    }
-}
-
-    
 }
