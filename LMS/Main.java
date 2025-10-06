@@ -1,38 +1,76 @@
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        // Step 1: Ek Course object banao aur usme Semester 1 set karo
         Course sem1 = new Course();
         sem1.sem1();
 
-        // Step 2: Student objects banao aur unhe sem1 course do
-        Student s1 = new Student("Masood", "B24110006065", sem1);
-        Student s2 = new Student("Luqman", "B24110006070", sem1);
-
-        // Step 3: Student_List banao aur students add karo
         StudentList list = new StudentList();
-        list.addStudent(s1);
-        list.addStudent(s2);
 
-        // Step 4: Saare students display karo
-        System.out.println("----- All Students -----");
-        list.displayStudents();
+        boolean running = true;
 
-        // Step 5: Search student by roll number
-        System.out.println("\n----- Search Student -----");
-        Student found = list.searchByRollNum("B24110006065");
-        if (found != null) {
-            System.out.println("Found: " + found);
-        } else {
-            System.out.println("Student not found!");
+        while (running) {
+            System.out.println("\n===== Mini LMS Menu =====");
+            System.out.println("1. Add Student");
+            System.out.println("2. Display All Students");
+            System.out.println("3. Search Student by Roll Number");
+            System.out.println("4. Remove Student by Roll Number");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter student name: ");
+                    String name = sc.nextLine();
+
+                    System.out.print("Enter roll number: ");
+                    String roll = sc.nextLine();
+
+                    Student s = new Student(name, roll, sem1);
+                    list.addStudent(s);
+                    break;
+
+                case 2:
+                    System.out.println("----- All Students -----");
+                    list.displayStudents();
+                    break;
+
+                case 3:
+                    System.out.print("Enter roll number to search: ");
+                    String searchRoll = sc.nextLine();
+                    Student found = list.searchByRollNum(searchRoll);
+                    if (found != null) {
+                        System.out.println("Found: " + found);
+                    } else {
+                        System.out.println("Student not found!");
+                    }
+                    break;
+
+                case 4:
+                    System.out.print("Enter roll number to remove: ");
+                    String removeRoll = sc.nextLine();
+                    Student removeStudent = list.searchByRollNum(removeRoll);
+                    if (removeStudent != null) {
+                        list.removeStudent(removeStudent);
+                    } else {
+                        System.out.println("Student not found!");
+                    }
+                    break;
+
+                case 5:
+                    running = false;
+                    System.out.println("Exiting... Bye!");
+                    break;
+
+                default:
+                    System.out.println("Invalid choice! Try again.");
+            }
         }
 
-        // Step 6: Remove student
-        System.out.println("\n----- Remove Student -----");
-        list.removeStudent(s2);
-
-        // Step 7: Final list display
-        System.out.println("\n----- Final List After Removal -----");
-        list.displayStudents();
+        sc.close();
     }
 }
